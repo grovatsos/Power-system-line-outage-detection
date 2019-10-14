@@ -1,0 +1,63 @@
+close all
+clear all
+
+figure('position', [20 80 1200 800]);
+axes('position', [0.12 0.16 0.82 0.76]);
+
+% loseline(12): (3,12)
+load('L12out.mat');
+PFI_g0
+subplot(4,1,1);
+set(gca, 'Position', [0.12,0.75,0.82,0.2]);
+semilogx(beta,ADDvec, 'b--<', 'LineWidth', 2, 'MarkerSize', 13,...
+        'MarkerFaceColor','b');
+hold on; grid on;
+set(gca,'XGrid','on','YGrid','on','XMinorGrid','off','XMinorTick','off');
+set(gca,'XTick',beta);
+set(gca,'XTickLabel',{});
+set(gca,'fontsize',34,'fontname','times new roman');
+ll=legend('Outage of (3,12)'       'Location','NorthWest');
+axis([0.7,250,14,21]);
+
+% loseline(30): (25,27)
+load('L30out.mat');
+PFI_g0
+subplot(4,1,2);
+semilogx(beta,ADDvec, 'm--o', 'LineWidth', 2, 'MarkerSize', 13,...
+        'MarkerFaceColor','m');
+hold on; grid on;
+set(gca, 'XTickLabelMode', 'Manual');
+set(gca, 'XTick', []);
+
+
+% loseline(14): (11,13)
+load('L14out.mat');
+PFI_g0
+subplot(4,1,3);
+% set(h1, 'pos', p);
+semilogx(beta,ADDvec, 'r--s', 'LineWidth', 2, 'MarkerSize', 13,...
+        'MarkerFaceColor','r');
+set(gca, 'XTickLabelMode', 'Manual');
+set(gca, 'XTick', []);
+    
+% loseline(7): (8,5)
+load('L7out.mat');
+PFI_g0
+subplot(4,1,4);
+semilogx(beta,ADDvec, 'g--x', 'LineWidth', 2, 'MarkerSize', 13,...
+        'MarkerFaceColor','r');
+hold on; grid on;
+set(gca,'XGrid','on','YGrid','on','XMinorGrid','off','XMinorTick','off');
+set(gca,'XTick',beta);
+set(gca,'XTickLabel',{'1/24','1/4','1/2','1','2','7'});
+% set(gca,'YTick',2:9);
+% set(gca,'YTickLabel',{'2','3','4','5','6','7','8','9'});
+set(gca,'fontsize',34,'fontname','times new roman'); ...
+   xl=xlabel('Mean Time to False Alarm (days)','fontsize',38,'fontname','times new roman');
+   set(xl,'Interpreter','latex');
+   yl=ylabel('Detection Delay','fontsize',38,'fontname','times new roman');
+   set(yl,'Interpreter','latex');hold on
+   ll=legend('Outage of (3,12)', 'Outage of (25,27)', 'Outage of (11,13)', 'Outage of (8,5)', ...
+       'Location','NorthWest');
+   set(ll,'Interpreter','latex');hold on
+% axis([0.7,250,0,25]);
